@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!--    <script src="/plugins/jQuery/jquery-2.1.4.min.js" th:src="@{/plugins/jQuery/jquery-2.1.4.min.js}"></script>-->
+    <script src="/plugins/jQuery/jquery-3.4.1.min.js" th:src="@{/plugins/jQuery/jquery-3.4.1.min.js}"></script>
+<!--    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"-->
+<!--            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
+<!--            crossorigin="anonymous"></script>-->
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <style>
+        .button-container {
+            padding: 5px;
+            background: #49c0cc;
+            border-bottom: 1px solid #aaa;
+        }
+        .main-container {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="button-container">
+    <button type="button" class="btn btn-primary" onclick="saveGoal()">完成</button>
+</div>
+<div class="main-container">
+    <form>
+        <div class="form-group">
+            <label for="goal">目标</label>
+            <input type="text" class="form-control" id="goal" placeholder="写下你的目标">
+        </div>
+        <div class="form-group">
+            <label for="award">奖励</label>
+            <input type="text" class="form-control" id="award" aria-describedby="awardHelp" placeholder="写下你的奖励">
+            <small id="awardHelp" class="form-text text-muted">完成目标时给自己一个奖励吧</small>
+        </div>
+    </form>
+</div>
+<div>
+
+</div>
+<script>
+    $(function () {
+
+
+    });
+
+    function toAddGoal() {
+        window.location = "goal/add";
+    }
+
+    function saveGoal() {
+        let param = {};
+        param.goal = $("#goal").val();
+        param.award = $("#award").val();
+        console.info(param)
+
+        $.ajax({
+            type: "POST",
+            url: "/goal/save",
+            data: {},
+            success: function (result) {
+
+            }
+        });
+    }
+</script>
+</body>
+</html>
